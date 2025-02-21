@@ -1,0 +1,57 @@
+units metal
+atom_style atomic
+boundary p p p # Define simulation box and periodic boundaries
+
+# Read graphene structure
+read_data graphene_largest.lmp
+
+# Define interatomic potential
+#pair_style lcbop
+#pair_coeff * * C.lcbop C
+pair_style tersoff
+pair_coeff * * BNC.tersoff C  
+#pair_style airebo 3.0 # Cutoff of 3 Å
+#pair_coeff * * CH.airebo C # Assign Airebo potential to Carbon atoms
+
+# Define velocity initialization
+timestep 0.001
+run_style verlet
+velocity all create 100.0 12345 mom yes rot yes dist gaussian
+
+dump myDump1 all xyz 1000 sim2.xyz  # Dumps atomic coordinates in XYZ format every 1000 steps into sim2.xyz
+dump myDump all custom 1000 all_xyz.xyz id type x y z xu yu zu
+
+# Equilibration: NPT ensemble
+fix tether all spring/self 10.0 z
+fix 1 all npt temp 100.0 100.0 1.0 x 0.0 0.0 1.0 y 0.0 0.0 1.0 z 0.0 0.0 1.0 couple none #iso 0.0 0.0 1.0
+thermo 1000
+run 10000
+unfix 1
+
+fix 1bis all npt temp 100.0 100.0 100.0 x 0.0 0.0 1.0 y 0.0 0.0 1.0 z 0.0 0.0 1.0 couple none #iso 0.0 0.0 1.0
+thermo 1000
+run 10000
+unfix 1bis
+
+
+# Quasistatic uniaxial tension
+#variable strain equal 0.001
+#variable strain_max equal 0.03
+#variable equil_steps equal 20000
+
+#label loop
+#variable eps loop 30
+
+fix 2 all npt temp 100.0 100.0 100.0 y 0.0 0.0 1.0 z 0.0 0.0 1.0
+fix 3 all deform 1 x erate 0.0005 remap x 
+
+run 60000
+#unfix 3
+
+#run 10000
+
+#next eps
+#jump SELF loop
+
+# Output configurations
+#thermo 1000
