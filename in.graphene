@@ -13,7 +13,7 @@ pair_coeff * * C.lcbop C
 #pair_style airebo 3.0 # cutoff = 3 Å
 #pair_coeff * * CH.airebo C 
 
-# Define finite temperature maintained during simulation
+# Define the finite temperature maintained during simulation
 variable Tstar equal 300
 
 timestep 0.001 # Δt = 1 fs
