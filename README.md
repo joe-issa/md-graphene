@@ -2,7 +2,7 @@
 
 ## Graphene Poisson Ratio Simulation
 
-This repository contains the course project for **PHY671: Multiscale Materials Modelling, from Atomistic to Macroscopic Methods** at the École Polytechnique (Institut Polytechnique de Paris). In this project, a graphene sheet is simulated under uniaxial tension using LAMMPS. The goal is to analyze the variation of its Poisson ratio with applied strain. The methodology follows the approach described in the paper:
+This repository contains the course project for **PHY671: Multiscale Materials Modelling, from Atomistic to Macroscopic Methods** at the École Polytechnique (Institut Polytechnique de Paris). In this project, a graphene sheet is simulated under uniaxial tension using LAMMPS. The goal is to analyze the variation of its Poisson ratio with applied strain at the atomistic scale. The methodology follows the approach described in the paper:
 
 > **Pacheco-Sanjuán, A., & Batra, R. C. (2023).** Insights into the auxetic behavior of graphene: A study on the temperature dependence of Poisson's ratio and in-plane moduli. *Carbon, 215*, 118416. [https://doi.org/10.1016/j.carbon.2023.118416](https://doi.org/10.1016/j.carbon.2023.118416)
 
