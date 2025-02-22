@@ -10,7 +10,7 @@ Post-processing is performed in **Python**, utilizing Jupyter Notebooks to visua
 
 ## Project Overview
 
-- **Graphene Microstructure**: Two sizes provided (M and L) in `.lmp` format
+- **Graphene Microstructure**: [Atomsk](https://atomsk.univ-lille.fr/), two sizes provided (M and L) in `.lmp` format
 - **Simulation Software**: [LAMMPS](https://www.lammps.org/)
 - **Post-Processing**: Python (Jupyter Notebooks)
 
